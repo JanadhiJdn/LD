@@ -39,5 +39,11 @@ public class ClientServiceImpl implements ClientService{
         System.out.println("CALLED ServiceImpl========================");
         return clientRepository.getAllClients();
     }
+
+    @Override
+    @Transactional(propagation = Propagation.REQUIRES_NEW, readOnly = false, isolation = Isolation.READ_COMMITTED)
+    public void editClient(Client client, int id) throws DataAccessException {
+        clientRepository.editClient(client, id);
+    }
  
 }

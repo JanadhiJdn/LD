@@ -17,5 +17,5 @@ public interface ClientRepository {
 
     public void addClient(Client client) throws DataAccessException;
     public List<Client> getAllClients() throws DataAccessException;
-    
+    public void editClient(Client client, int id) throws DataAccessException;
 }

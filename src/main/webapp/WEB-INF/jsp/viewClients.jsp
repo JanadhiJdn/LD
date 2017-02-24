@@ -99,7 +99,7 @@
                                     
                             <hr>
 
-                            <table class="table table-bordered table-striped table-hover table-responsive" cellspacing="15" style="font-size: 15px;">
+                            <table class="table table-bordered table-striped table-hover table-responsive " cellspacing="15" style="font-size: 15px;">
                                 <thead>
                                     <tr>
                                         <th> ID</th>
@@ -146,12 +146,17 @@
                                         <h4 class="modal-title">Edit Client</h4>
                                     </div>
                                     <div class="modal-body">
-                                        <form id="addClient" action="${pageContext.servletContext.contextPath}/client/edit" method="POST">
+                                        <form id="editClient" action="${pageContext.servletContext.contextPath}/client/edit" method="POST">
+                                            <div class="form-group">
+                                                <label style="color: #000000;">ID</label>
+                                                <input type="text" class="form-control disabled" id="first_name" name="first_name" autofocus required>	            		
+                                                <div class="help-block with-errors"></div>  
+                                            </div> 
                                             <div class="form-group">
                                                 <label style="color: #000000;">First Name</label>
                                                 <input type="text" class="form-control" id="first_name" name="first_name" autofocus required>	            		
                                                 <div class="help-block with-errors"></div>  
-                                            </div>    
+                                            </div>   
                                             <div class="form-group">  
                                                 <label style="color: #000000;">Last Name</label>
                                                 <input type="text" class="form-control" id="last_name" name="last_name" required>

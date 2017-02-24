@@ -22,25 +22,23 @@ import org.springframework.web.servlet.ModelAndView;
  */
 @Controller
 public class ClientController {
+
     @Autowired
     private ClientService clientService;
-    
+
     @RequestMapping(value = {"/client/add"}, method = RequestMethod.POST)
     public ModelAndView addClient(HttpServletRequest request, HttpSession userSession) {
         System.out.println("CALLED Client controller(addClient)------------------------");
-        
         String firstName = request.getParameter("first_name");
         String lastName = request.getParameter("last_name");
         String mobile = request.getParameter("mobile");
         String address = request.getParameter("address");
-
-        Client client=new Client();
+        Client client = new Client();
         client.setFirstName(firstName);
         client.setLastName(lastName);
         client.setMobile(mobile);
         client.setAddress(address);
-        
-        if ( ((firstName == null) || (lastName == null) || (mobile == null) || (address == null)) || (firstName.isEmpty() || lastName.isEmpty()|| mobile.isEmpty()|| address.isEmpty())) {
+        if (((firstName == null) || (lastName == null) || (mobile == null) || (address == null)) || (firstName.isEmpty() || lastName.isEmpty() || mobile.isEmpty() || address.isEmpty())) {
             request.setAttribute("$error", "Please fill required fields !");
             return new ModelAndView("addClient");
         } else {
@@ -49,12 +47,12 @@ public class ClientController {
             return new ModelAndView("addClient");
         }
     }
-    
+
     @RequestMapping(value = {"/client/view"}, method = RequestMethod.POST)
     public ModelAndView getAllClients(HttpServletRequest request, HttpSession userSession) {
         ModelAndView view = new ModelAndView();
         List<Client> clientList = clientService.getAllClients();
-        if(clientList!=null){
+        if (clientList != null) {
             int allClients = 0;
             for (Client client : clientList) {
                 allClients++;
@@ -62,12 +60,25 @@ public class ClientController {
             }
             System.out.println("All Clients=" + allClients);
             request.setAttribute("$clientList", clientList);
-        }else{
+        } else {
             request.setAttribute("$error", "No clients exists...!!!");
         }
-        
+        view.setViewName("viewClients");
+        return view;
+    }
+
+    @RequestMapping(value = {"/client/edit"}, method = RequestMethod.POST)
+    public ModelAndView editStudentForEdit(HttpServletRequest request, HttpSession userSession) {
+        int clientID = Integer.parseInt(request.getParameter("clientID"));
+        String firstName = request.getParameter("first_name");
+        String lastName = request.getParameter("last_name");
+        String mobile = request.getParameter("mobile");
+        String address = request.getParameter("address");
+
+        clientService.editClient(new Client(firstName, lastName, address, mobile,null) , clientID);
+
+        ModelAndView view = new ModelAndView();
         view.setViewName("viewClients");
         return view;
     }
 }
-

@@ -171,11 +171,11 @@ public class Cases implements java.io.Serializable {
     public Set<RelationCasesClient> getRelationCasesClients() {
         return this.relationCasesClients;
     }
-
+    
     public void setRelationCasesClients(Set<RelationCasesClient> relationCasesClients) {
         this.relationCasesClients = relationCasesClients;
     }
-
+    
     public Set<Defendant> getDefendants() {
         return this.defendants;
     }

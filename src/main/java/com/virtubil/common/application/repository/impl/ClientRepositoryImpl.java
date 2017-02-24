@@ -37,4 +37,18 @@ public class ClientRepositoryImpl implements ClientRepository{
                 .setMaxResults(100)
                 .list();
     }
+
+    @Override
+    public void editClient(Client client, int id) throws DataAccessException {
+        sessionFactory
+                .getCurrentSession()
+                .createSQLQuery("update client SET firstName=:fn, lastName=:ln, address=:ad, mobile=:mob WHERE clientID=:id")
+                .addEntity(Client.class)
+                .setParameter("fn", client.getFirstName())
+                .setParameter("ln", client.getLastName())
+                .setParameter("ad", client.getAddress())
+                .setParameter("mob", client.getMobile())
+                .setParameter("id", id)
+                .executeUpdate();
+    }
 }
