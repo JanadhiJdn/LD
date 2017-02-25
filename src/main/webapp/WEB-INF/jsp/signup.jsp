@@ -1,7 +1,7 @@
 <%-- 
     Document   : signup
     Created on : Feb 16, 2017, 10:02:03 PM
-    Author     : Janadhi Nanayakkara
+    Author     : Janadhi Nanayakkara j
 --%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -69,6 +69,7 @@
                             <input type="text" class="form-control mask-name" id="last_name" name="last_name" placeholder="Last Name" required>
                             <div class="help-block with-errors"></div>  
                         </div>	
+                        
                         <div class="form-group">	            	            
                             <input type="text" class="form-control mask-mobile" id="mobile" name="mobile" placeholder="Mobile Number" required>	            	            
                             <div class="help-block with-errors"></div>  
